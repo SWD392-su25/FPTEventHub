@@ -9,7 +9,7 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo.fpt.png.png",
+      "src": "src/assets/FPTLogo.png",
       "type": "image/png",
       "sizes": "192x192"
     },

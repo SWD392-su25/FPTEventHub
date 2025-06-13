@@ -12,7 +12,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ paddingTop: "80px" }}>
       <h1>Welcome to FPT Event Hub</h1>
       {currentUser ? (
         <div>

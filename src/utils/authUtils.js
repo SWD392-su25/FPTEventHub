@@ -6,3 +6,9 @@ export const isValidFptEmail = (email) => email.endsWith("@fpt.edu.vn");
 export const login = (email, password) => {
   return users.find((u) => u.email === email && u.password === password) || null;
 };
+
+export const logout = () => {
+  localStorage.removeItem('userToken');
+  localStorage.removeItem('userEmail');
+  localStorage.removeItem('userRole');
+};

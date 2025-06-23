@@ -1,14 +1,22 @@
+// src/utils/authUtils.js
 // Hàm validate email và xử lý đăng nhập
+
 import { users } from "./mockUsers";
 
 export const isValidFptEmail = (email) => email.endsWith("@fpt.edu.vn");
 
 export const login = (email, password) => {
-  return users.find((u) => u.email === email && u.password === password) || null;
+  return users.find(
+    (user) => user.email === email && user.password === password
+  );
 };
 
 export const logout = () => {
-  localStorage.removeItem('userToken');
-  localStorage.removeItem('userEmail');
-  localStorage.removeItem('userRole');
+  localStorage.removeItem("currentUser");
+  sessionStorage.removeItem("currentUser");
 };
+// export const logout = () => {
+//   localStorage.removeItem('userToken');
+//   localStorage.removeItem('userEmail');
+//   localStorage.removeItem('userRole');
+// };

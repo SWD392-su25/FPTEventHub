@@ -1,8 +1,17 @@
 // src/components/HomePage.jsx
 import React, { useEffect, useState } from "react";
+import styles from "../styles/HomePage.module.css";
+import { Button } from "@mui/material";
+import allEvents from "../utils/mockEvents";
+
+// Lấy 3 sự kiện đầu tiên làm featured
+const featuredEvents = allEvents.slice(0, 3);
 
 const HomePage = () => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 9;
 
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
@@ -11,19 +20,66 @@ const HomePage = () => {
     }
   }, []);
 
+  // Tự động chuyển carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCarouselIndex((prevIndex) => (prevIndex + 1) % featuredEvents.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const startIdx = (currentPage - 1) * cardsPerPage;
+  const pagedEvents = allEvents.slice(startIdx, startIdx + cardsPerPage);
+  const totalPages = Math.ceil(allEvents.length / cardsPerPage);
+
   return (
-    <div style={{ paddingTop: "80px" }}>
-      <h1>Welcome to FPT Event Hub</h1>
-      {currentUser ? (
-        <div>
-          <p>Email: {currentUser.email}</p>
-          <p>Role: {currentUser.role}</p>
+    <div className={styles.container}>
+      <h1 className={styles.welcome}>Welcome to FPT Event Hub</h1>
+      {/* {currentUser && (
+        <p className={styles.userInfo}>
+          Logged in as <strong>{currentUser.email}</strong> ({currentUser.role})
+        </p>
+      )} */}
+
+      {/* Carousel */}
+      <div className={styles.carousel}>
+        <img
+          src={featuredEvents[carouselIndex].image}
+          alt={featuredEvents[carouselIndex].name}
+        />
+        <div className={styles.carouselCaption}>
+          {featuredEvents[carouselIndex].name}
         </div>
-      ) : (
-        <p>Loading user info...</p>
-      )}
+      </div>
+
+      {/* Grid Events */}
+      <div className={styles.cardGrid}>
+        {pagedEvents.map((event) => (
+          <div className={styles.card} key={event.id}>
+            <img src={event.image} alt={event.name} />
+            <h3>{event.name}</h3>
+            <Button variant="outlined" size="small">
+              Details
+            </Button>
+          </div>
+        ))}
+      </div>
+
+      {/* Pagination */}
+      <div className={styles.pagination}>
+        {Array.from({ length: totalPages }, (_, idx) => (
+          <button
+            key={idx + 1}
+            onClick={() => setCurrentPage(idx + 1)}
+            className={currentPage === idx + 1 ? styles.activePage : ""}
+          >
+            {idx + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
 
 export default HomePage;
+

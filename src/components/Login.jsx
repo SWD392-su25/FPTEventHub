@@ -1,7 +1,8 @@
 // src/components/Login.jsx
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../styles/Login.module.css";
+import styles from "../styles/AuthForm.module.css";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   IconButton,
@@ -10,7 +11,7 @@ import {
   FormControlLabel,
   Button,
 } from "@mui/material";
-import { isValidFptEmail, login } from "../utils/authUtils";
+import { login } from "../utils/authUtils";
 import FPTLogo from "../assets/FPTLogo.png";
 import FPTCampus from "../assets/FPTCampus.png";
 
@@ -25,11 +26,6 @@ const Login = () => {
 
   const handleLogin = () => {
     setError("");
-
-    if (!isValidFptEmail(email)) {
-      setError("Chỉ chấp nhận email đuôi @fpt.edu.vn");
-      return;
-    }
 
     const foundUser = login(email, password);
     if (foundUser) {
@@ -62,7 +58,7 @@ const Login = () => {
 
             <input
               type="email"
-              placeholder="Email@fpt.edu.vn"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={styles.input}

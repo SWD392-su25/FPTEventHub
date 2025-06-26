@@ -1,7 +1,7 @@
 // src/components/Register.jsx
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import styles from "../styles/Register.module.css";
+import styles from "../styles/AuthForm.module.css";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   IconButton,
@@ -12,6 +12,7 @@ import FPTLogo from "../assets/FPTLogo.png";
 import FPTCampus from "../assets/FPTCampus.png";
 
 const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,7 +23,7 @@ const Register = () => {
 
   const handleRegister = () => {
     setError("");
-    if (!email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword) {
       setError("Vui lòng điền đầy đủ thông tin.");
       return;
     }
@@ -46,8 +47,14 @@ const Register = () => {
             <img src={FPTLogo} alt="FPT Logo" className={styles.logo} />
             <h1 className={styles.title}>Create an Account</h1>
             <p className={styles.subtitle}>Fill in the form to register</p>
-
-            {error && <Alert severity="error">{error}</Alert>}
+            
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={styles.input}
+            />
 
             <input
               type="email"
@@ -58,28 +65,31 @@ const Register = () => {
             />
 
             <div className={styles.passwordContainer}>
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <IconButton
-                onClick={() => setShowPassword(!showPassword)}
-                className={styles.eyeIcon}
-              >
-                {showPassword ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </div>
+            <input
+              className={styles.passwordInput} // Thêm riêng để xử lý input trong container
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <IconButton
+              onClick={() => setShowPassword(!showPassword)}
+              className={styles.eyeIcon}
+            >
+              {showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </div>
 
-            <div className={styles.passwordContainer}>
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
+          <div className={styles.passwordContainer}>
+            <input
+              className={styles.passwordInput}
+              type={showPassword ? "text" : "password"}
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+            {error && <Alert severity="error">{error}</Alert>}
 
             <Button variant="contained" fullWidth onClick={handleRegister}>
               Register

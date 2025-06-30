@@ -1,45 +1,80 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import {
+  Box,
+  Typography,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Alert,
+} from "@mui/material";
 import allEvents from "../utils/mockEvents";
-import "../styles/DetailScreen.css";
 
 export default function DetailScreen() {
   const { eventID } = useParams();
   const navigate = useNavigate();
 
-  // Chuyển ID từ chuỗi sang số để tìm đúng
   const event = allEvents.find((item) => item.id === Number(eventID));
 
   if (!event) {
     return (
-      <div className="center">
-        <p className="errorText">Không tìm thấy sự kiện</p>
-      </div>
+      <Container maxWidth="sm">
+        <Box mt={5} textAlign="center">
+          <Alert severity="error" variant="filled">
+            Không tìm thấy sự kiện
+          </Alert>
+        </Box>
+      </Container>
     );
   }
 
   return (
-    <div className="detailContainer">
-      <div className="detailContent">
-        <img src={event.image} alt={event.name} className="detailImage" />
-        <h1 className="detailTitle">{event.name}</h1>
-        <p className="detailDescription">
-          Thời gian: {event.time} <br />
-          Địa điểm: {event.room} <br />
-          Số lượng: {event.quantity} người
-        </p>
+    <Container maxWidth="md">
+      <Box mt={5} display="flex" justifyContent="center">
+        <Card sx={{ maxWidth: 600, width: "100%", boxShadow: 5 }}>
+          <CardMedia
+            component="img"
+            height="300"
+            image={event.image}
+            alt={event.name}
+          />
+          <CardContent>
+            <Typography
+              variant="h5"
+              component="div"
+              fontWeight="bold"
+              color="primary"
+              gutterBottom
+            >
+              {event.name}
+            </Typography>
 
-        <button
-          className="registerButton"
-          onClick={() =>
-            navigate(`/register/${event.id}`, {
-              state: { title: event.name },
-            })
-          }
-        >
-          Đăng ký tham gia
-        </button>
-      </div>
-    </div>
+            <Typography variant="body1" color="text.secondary" paragraph>
+              <strong>Thời gian:</strong> {event.time} <br />
+              <strong>Địa điểm:</strong> {event.room} <br />
+              <strong>Số lượng:</strong> {event.quantity} người
+            </Typography>
+
+            <Button
+              variant="contained"
+              fullWidth
+              sx={{
+                backgroundColor: "#8F6B4A",
+                "&:hover": { backgroundColor: "#7c5a3d" },
+              }}
+              onClick={() =>
+                navigate(`/register/${event.id}`, {
+                  state: { title: event.name },
+                })
+              }
+            >
+              Đăng ký tham gia
+            </Button>
+          </CardContent>
+        </Card>
+      </Box>
+    </Container>
   );
 }

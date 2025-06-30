@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/HomePage.module.css";
 import { Button } from "@mui/material";
 import allEvents from "../utils/mockEvents";
+import { useNavigate } from "react-router-dom";
 
 // Lấy 3 sự kiện đầu tiên làm featured
 const featuredEvents = allEvents.slice(0, 3);
@@ -11,6 +12,7 @@ const HomePage = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
   const cardsPerPage = 9;
 
   useEffect(() => {
@@ -35,11 +37,11 @@ const HomePage = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.welcome}>Welcome to FPT Event Hub</h1>
-      {/* {currentUser && (
+      {currentUser && (
         <p className={styles.userInfo}>
-          Logged in as <strong>{currentUser.email}</strong> ({currentUser.role})
+          Welcome and enjoy the event <strong>{currentUser.name}</strong>
         </p>
-      )} */}
+      )}
 
       {/* Carousel */}
       <div className={styles.carousel}>
@@ -58,7 +60,11 @@ const HomePage = () => {
           <div className={styles.card} key={event.id}>
             <img src={event.image} alt={event.name} />
             <h3>{event.name}</h3>
-            <Button variant="outlined" size="small">
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={() => navigate(`/detail/${event.id}`)}
+            >
               Details
             </Button>
           </div>
@@ -82,4 +88,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

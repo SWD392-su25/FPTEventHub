@@ -1,0 +1,62 @@
+.detailContainer {
+  background-color: #fff8e7;
+  min-height: 100vh;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.detailContent {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.detailImage {
+  width: 100%;
+  height: 250px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.detailTitle {
+  font-size: 28px;
+  font-weight: bold;
+  color: #5a4032;
+  margin-bottom: 15px;
+}
+
+.detailDescription {
+  font-size: 16px;
+  color: #3d2b1f;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.registerButton {
+  background-color: #8f6b4a;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.registerButton:hover {
+  background-color: #7a573b;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.errorText {
+  font-size: 18px;
+  color: #d32f2f;
+}

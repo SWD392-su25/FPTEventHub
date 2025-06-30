@@ -1,8 +1,7 @@
 /* src/styles/HomePage.module.css */
 
 .container {
-  padding: 80px 20px 40px;
-  padding: 40px 20px;
+  padding: 40px 20px 40px;
   text-align: center;
   background-color: #f9f9f9;
   min-height: 100vh;

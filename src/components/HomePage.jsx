@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 import allEvents from "../utils/mockEvents";
 import { useNavigate } from "react-router-dom";
 
-// Lấy 3 sự kiện đầu tiên làm featured
 const featuredEvents = allEvents.slice(0, 3);
 
 const HomePage = () => {
@@ -22,7 +21,6 @@ const HomePage = () => {
     }
   }, []);
 
-  // Tự động chuyển carousel
   useEffect(() => {
     const interval = setInterval(() => {
       setCarouselIndex((prevIndex) => (prevIndex + 1) % featuredEvents.length);
@@ -43,46 +41,52 @@ const HomePage = () => {
         </p>
       )}
 
-      {/* Carousel */}
-      <div className={styles.carousel}>
-        <img
-          src={featuredEvents[carouselIndex].image}
-          alt={featuredEvents[carouselIndex].name}
-        />
-        <div className={styles.carouselCaption}>
-          {featuredEvents[carouselIndex].name}
-        </div>
-      </div>
-
-      {/* Grid Events */}
-      <div className={styles.cardGrid}>
-        {pagedEvents.map((event) => (
-          <div className={styles.card} key={event.id}>
-            <img src={event.image} alt={event.name} />
-            <h3>{event.name}</h3>
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={() => navigate(`/detail/${event.id}`)}
-            >
-              Details
-            </Button>
+      {/* Sự kiện nổi bật */}
+      <section className={styles.featuredSection}>
+        <h2 className={styles.sectionTitle}>🔥 Sự kiện nổi bật</h2>
+        <div className={styles.carousel}>
+          <img
+            src={featuredEvents[carouselIndex].image}
+            alt={featuredEvents[carouselIndex].name}
+          />
+          <div className={styles.carouselCaption}>
+            {featuredEvents[carouselIndex].name}
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
-      {/* Pagination */}
-      <div className={styles.pagination}>
-        {Array.from({ length: totalPages }, (_, idx) => (
-          <button
-            key={idx + 1}
-            onClick={() => setCurrentPage(idx + 1)}
-            className={currentPage === idx + 1 ? styles.activePage : ""}
-          >
-            {idx + 1}
-          </button>
-        ))}
-      </div>
+      {/* Danh sách các sự kiện hiện có */}
+      <section className={styles.eventListSection}>
+        <h2 className={styles.sectionTitle}>📅 Danh sách sự kiện</h2>
+        <div className={styles.cardGrid}>
+          {pagedEvents.map((event) => (
+            <div className={styles.card} key={event.id}>
+              <img src={event.image} alt={event.name} />
+              <h3>{event.name}</h3>
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={() => navigate(`/detail/${event.id}`)}
+              >
+                Details
+              </Button>
+            </div>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        <div className={styles.pagination}>
+          {Array.from({ length: totalPages }, (_, idx) => (
+            <button
+              key={idx + 1}
+              onClick={() => setCurrentPage(idx + 1)}
+              className={currentPage === idx + 1 ? styles.activePage : ""}
+            >
+              {idx + 1}
+            </button>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };

@@ -15,7 +15,9 @@ import ForgotPassword from "./components/ForgotPassword";
 import HomePage from "./components/HomePage";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
-import Detail from "./components/Detail";
+import EventDetail from "./components/EventDetail";
+import RegisterEvent from "./components/RegisterEvent";
+
 import { Toolbar } from "@mui/material";
 
 // Bọc phần nội dung để chỉ hiện Header ở các trang cụ thể
@@ -37,7 +39,8 @@ const AppLayout = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/detail/:eventID" element={<Detail />} />
+        <Route path="/detail/:eventID" element={<EventDetail />} />
+        <Route path="/register/:eventID" element={<RegisterEvent />} />
       </Routes>
     </>
   );

@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import allEvents from "../utils/mockEvents";
 
-export default function DetailScreen() {
+export default function EventDetail() {
   const { eventID } = useParams();
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ export default function DetailScreen() {
               {event.name}
             </Typography>
 
-            <Typography variant="body1" color="text.secondary" paragraph>
+            <Typography variant="body1" color="text.secondary">
               <strong>Thời gian:</strong> {event.time} <br />
               <strong>Địa điểm:</strong> {event.room} <br />
               <strong>Số lượng:</strong> {event.quantity} người

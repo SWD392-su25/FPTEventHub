@@ -36,10 +36,17 @@ export default function EventDetail() {
         <Card sx={{ maxWidth: 600, width: "100%", boxShadow: 5 }}>
           <CardMedia
             component="img"
-            height="300"
             image={event.image}
             alt={event.name}
+            sx={{
+              width: "100%",
+              aspectRatio: "16/9",
+              objectFit: "cover",
+              borderTopLeftRadius: "4px",
+              borderTopRightRadius: "4px",
+            }}
           />
+
           <CardContent>
             <Typography
               variant="h5"

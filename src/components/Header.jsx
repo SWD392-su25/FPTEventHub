@@ -62,7 +62,6 @@ const Header = () => {
 
             <Link to="/profile" className="dropdown-item">Profile</Link>
             <button className="dropdown-item" disabled>History</button>
-            <button className="dropdown-item" disabled>Calendar</button>
 
             <div className="dropdown-divider"></div>
             <button className="dropdown-item text-danger" onClick={handleLogout}>

@@ -1,6 +1,23 @@
-/* index.css - có thể để trống hoặc thêm cấu trúc cơ bản */
+/* src/index.css */
 
-body {
+html,
+body,
+#root {
+  height: 100%;
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* tùy chỉnh */
+}
+
+/* Có thể di chuyển phần này sang App.css cũng được */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  flex: 1;
+  padding: 24px;
 }

@@ -9,7 +9,7 @@ import Event05 from "../assets/events/Event05.png";
 const allEvents = [
   {
     id: 1,
-    name: "Event 01",
+    name: "Summer Fest",
     time: "2025-07-15 08:00",
     room: "A101",
     quantity: 100,
@@ -17,7 +17,7 @@ const allEvents = [
   },
   {
     id: 2,
-    name: "Event 02",
+    name: "Giới thiệu chuyên ngành",
     time: "2025-07-20 13:30",
     room: "B202",
     quantity: 80,
@@ -25,7 +25,7 @@ const allEvents = [
   },
   {
     id: 3,
-    name: "Event 03",
+    name: "FPT Talent",
     time: "2025-08-05 09:00",
     room: "Hall C",
     quantity: 150,
@@ -33,7 +33,7 @@ const allEvents = [
   },
   {
     id: 4,
-    name: "Event 04",
+    name: "AI First",
     time: "2025-08-06 09:00",
     room: "D303",
     quantity: 120,
@@ -41,7 +41,7 @@ const allEvents = [
   },
   {
     id: 5,
-    name: "Event 05",
+    name: "Empower your Future",
     time: "2025-08-07 14:00",
     room: "E404",
     quantity: 90,

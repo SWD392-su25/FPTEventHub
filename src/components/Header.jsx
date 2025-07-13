@@ -42,7 +42,9 @@ const Header = () => {
 
       <ul className="navbar-nav ml-4">
         <li className="nav-item">
-          <Link className="nav-link active" to="/home">Home</Link>
+          <Link className="nav-link active" to="/home">
+            Home
+          </Link>
         </li>
         {(role === "Student" || role === "Lecturer") && (
           <li className="nav-item">
@@ -99,8 +101,12 @@ const Header = () => {
             </div>
             <div className="dropdown-divider"></div>
 
-            <Link to="/profile" className="dropdown-item">Profile</Link>
-            <button className="dropdown-item" disabled>History</button>
+            <Link to="/profile" className="dropdown-item">
+              Profile
+            </Link>
+            <Link to="/history" className="dropdown-item">
+              History
+            </Link>
 
             <div className="dropdown-divider"></div>
             <button

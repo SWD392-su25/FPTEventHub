@@ -79,8 +79,7 @@ const EventManagement = () => {
     .filter(
       (e) =>
         e.name.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-        (!filterRoom ||
-          e.room.toLowerCase().includes(filterRoom.toLowerCase())) &&
+        (!filterRoom || e.room.toLowerCase().includes(filterRoom.toLowerCase())) &&
         (!filterDate || new Date(e.time) >= new Date(filterDate))
     )
     .sort((a, b) => {

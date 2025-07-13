@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# 🎉 FPTEventHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**FPTEventHub** là hệ thống quản lý sự kiện sinh viên được phát triển dành riêng cho sinh viên, giảng viên và quản trị viên tại Đại học FPT. Hệ thống cho phép người dùng đăng nhập, xem và quản lý các sự kiện học thuật, nghề nghiệp và giải trí một cách hiệu quả.
 
-## Available Scripts
+## 🚀 Tính năng chính
 
-In the project directory, you can run:
+### 🧑‍💻 Người dùng
+- Đăng ký / Đăng nhập bằng email `@fpt.edu.vn`
+- Xem danh sách sự kiện theo phân trang (9 sự kiện/trang)
+- Truy cập chi tiết từng sự kiện
+- Carousel hiển thị 3 sự kiện nổi bật (tự động chuyển)
 
-### `npm start`
+### 📋 Admin
+- Quản lý người dùng (sinh viên, giảng viên)
+- Tạo, chỉnh sửa, xóa sự kiện
+- Import danh sách sự kiện từ file
+- Xem thống kê sự kiện theo số lượng đăng ký
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 👨‍🏫 Giảng viên
+- Tạo các sự kiện liên quan đến học thuật
+- Xem danh sách sinh viên tham gia
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📂 Cấu trúc thư mục
+src/
+├── assets/ # Hình ảnh logo, campus, sự kiện
+│ ├── FPTCampus.png
+│ ├── FPTLogo.png
+│ └── events/
+├── components/ # Các thành phần React chính
+│ ├── HomePage.jsx
+│ ├── Login.jsx
+│ ├── Register.jsx
+│ └── ForgotPassword.jsx
+├── styles/ # Các file CSS module
+│ ├── AuthForm.module.css
+│ └── HomePage.module.css
+├── utils/ # Hàm tiện ích và mock data
+│ ├── authUtils.js
+│ └── mockEvents.js
+├── App.js # Khai báo route
+├── index.js # Điểm khởi chạy ứng dụng
+└── index.css # CSS toàn cục
 
-### `npm test`
+## 🛠️ Công nghệ sử dụng
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Frontend:** ReactJS, React Router DOM
+- **UI Framework:** Material UI (MUI)
+- **CSS:** CSS Modules
+- **State:** LocalStorage & SessionStorage
+- **Mock Data:** Tạm thời sử dụng `mockEvents.js` và `authUtils.js`

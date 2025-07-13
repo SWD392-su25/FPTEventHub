@@ -23,13 +23,14 @@ import RealTimeCalendar from "./components/RealTimeCalendar";
 import EventManagement from "./components/admin/EventManagement";
 import StudentManagement from "./components/admin/StudentManagement";
 import LecturerManagement from "./components/admin/LecturerManagement";
+import RegistrationHistory from "./components/RegistrationHistory";
 
 import { Toolbar } from "@mui/material";
 
- const isAdmin = () => {
-   const user = JSON.parse(localStorage.getItem("currentUser"));
-   return user && user.role === "Admin";
- };
+const isAdmin = () => {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  return user && user.role === "Admin";
+};
 
 const AppLayout = () => {
   const location = useLocation();
@@ -52,6 +53,7 @@ const AppLayout = () => {
           <Route path="/register/:eventID" element={<RegisterEvent />} />
           <Route path="/register-success" element={<RegisterSuccess />} />
           <Route path="/real-calendar" element={<RealTimeCalendar />} />
+          <Route path="/history" element={<RegistrationHistory />} />
 
           {/* Các route chỉ dành cho Admin */}
           <Route

@@ -46,11 +46,33 @@ const Header = () => {
             Home
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/real-calendar">
-            Calendar
-          </Link>
-        </li>
+        {(role === "Student" || role === "Lecturer") && (
+          <li className="nav-item">
+            <Link className="nav-link" to="/real-calendar">
+              Calendar
+            </Link>
+          </li>
+        )}
+
+        {role === "Admin" && (
+          <>
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin/events">
+                Quản lý sự kiện
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin/students">
+                Quản lý sinh viên
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin/lecturers">
+                Quản lý giảng viên
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
 
       <div className="flex-grow-1"></div>

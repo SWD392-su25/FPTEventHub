@@ -18,10 +18,18 @@ import Register from "./components/Register";
 import Profile from "./components/Profile";
 import EventDetail from "./components/EventDetail";
 import RegisterEvent from "./components/RegisterEvent";
+import RegisterSuccess from "./components/RegisterSuccess";
 import RealTimeCalendar from "./components/RealTimeCalendar";
+import EventManagement from "./components/admin/EventManagement";
+import StudentManagement from "./components/admin/StudentManagement";
+import LecturerManagement from "./components/admin/LecturerManagement";
 
 import { Toolbar } from "@mui/material";
 
+ const isAdmin = () => {
+   const user = JSON.parse(localStorage.getItem("currentUser"));
+   return user && user.role === "Admin";
+ };
 
 const AppLayout = () => {
   const location = useLocation();
@@ -42,7 +50,36 @@ const AppLayout = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/detail/:eventID" element={<EventDetail />} />
           <Route path="/register/:eventID" element={<RegisterEvent />} />
+          <Route path="/register-success" element={<RegisterSuccess />} />
           <Route path="/real-calendar" element={<RealTimeCalendar />} />
+
+          {/* Các route chỉ dành cho Admin */}
+          <Route
+            path="/admin/events"
+            element={
+              isAdmin() ? <EventManagement /> : <Navigate to="/unauthorized" />
+            }
+          />
+          <Route
+            path="/admin/students"
+            element={
+              isAdmin() ? (
+                <StudentManagement />
+              ) : (
+                <Navigate to="/unauthorized" />
+              )
+            }
+          />
+          <Route
+            path="/admin/lecturers"
+            element={
+              isAdmin() ? (
+                <LecturerManagement />
+              ) : (
+                <Navigate to="/unauthorized" />
+              )
+            }
+          />
         </Routes>
       </div>
       {!shouldHideHeader && <Footer />}

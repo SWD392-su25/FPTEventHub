@@ -18,6 +18,7 @@ import Register from "./components/Register";
 import Profile from "./components/Profile";
 import EventDetail from "./components/EventDetail";
 import RegisterEvent from "./components/RegisterEvent";
+import RealTimeCalendar from "./components/RealTimeCalendar";
 
 import { Toolbar } from "@mui/material";
 
@@ -41,6 +42,7 @@ const AppLayout = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/detail/:eventID" element={<EventDetail />} />
           <Route path="/register/:eventID" element={<RegisterEvent />} />
+          <Route path="/real-calendar" element={<RealTimeCalendar />} />
         </Routes>
       </div>
       {!shouldHideHeader && <Footer />}

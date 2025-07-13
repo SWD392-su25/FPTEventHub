@@ -19,6 +19,25 @@ export default function RegisterEvent() {
   const [email, setEmail] = useState("");
   const [alert, setAlert] = useState(null);
 
+  const role = localStorage.getItem("role");
+
+  if (role === "admin") {
+    return (
+      <Box mt={5} textAlign="center">
+        <Typography variant="h6" color="error">
+          Admin không được phép đăng ký tham gia sự kiện.
+        </Typography>
+        <Button
+          variant="outlined"
+          sx={{ mt: 2 }}
+          onClick={() => navigate("/home")}
+        >
+          Quay về trang chủ
+        </Button>
+      </Box>
+    );
+  }
+
   if (!event) {
     return (
       <Box mt={5} textAlign="center">
@@ -36,22 +55,21 @@ export default function RegisterEvent() {
     );
   }
 
-  const handleRegister = () => {
-    if (!name || !email) {
-      setAlert({
-        type: "error",
-        message: "Vui lòng điền đầy đủ họ tên và email.",
-      });
-      return;
-    }
-
+const handleRegister = () => {
+  if (!name || !email) {
     setAlert({
-      type: "success",
-      message: `Bạn đã đăng ký tham gia sự kiện: ${event.name}`,
+      type: "error",
+      message: "Vui lòng điền đầy đủ họ tên và email.",
     });
+    return;
+  }
 
-    setTimeout(() => navigate("/home"), 2000);
-  };
+  // Điều hướng sang trang thành công, truyền dữ liệu qua state
+  navigate("/register-success", {
+    state: { name, email, eventName: event.name },
+  });
+};
+
 
   return (
     <Box

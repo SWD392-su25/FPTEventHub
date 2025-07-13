@@ -3,10 +3,22 @@
 
 export const users = [
   {
+    email: "admin@gmail.com",
+    name: "Role Admin",
+    password: "1",
+    role: "Admin",
+  },
+  {
     email: "tuanlnse170307@fpt.edu.vn",
     name: "Lê Ngọc Tuấn",
     password: "1",
     role: "Admin",
+  },
+  {
+    email: "student@gmail.com",
+    name: "Role Student",
+    password: "1",
+    role: "Student",
   },
   {
     email: "giaphnse171532@fpt.edu.vn",
@@ -19,6 +31,12 @@ export const users = [
     name: "Nguyễn Duy Dương",
     password: "1",
     role: "Student",
+  },
+  {
+    email: "lecture@gmail.com",
+    name: "Role Lecture",
+    password: "1",
+    role: "Lecture",
   },
   {
     email: "tript9@fpt.edu.vn",
